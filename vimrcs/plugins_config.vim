@@ -8,8 +8,8 @@
 """"""""""""""""""""""""""""""
 " => Load pathogen paths
 """"""""""""""""""""""""""""""
-call pathogen#infect('~/.vim_runtime/sources_forked')
-call pathogen#infect('~/.vim_runtime/sources_non_forked')
+call pathogen#infect('~/.vim_runtime/sources_forked/{}')
+call pathogen#infect('~/.vim_runtime/sources_non_forked/{}')
 call pathogen#helptags()
 
 """"""""""""""""""""""""""""""
@@ -45,6 +45,7 @@ endif
 let g:ctrlp_working_path_mode = 0
 
 let g:ctrlp_map = '<c-f>'
+map <leader>j :CtrlP<cr>
 map <c-b> :CtrlPBuffer<cr>
 
 let g:ctrlp_max_height = 20
@@ -52,9 +53,10 @@ let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
 
 
 """"""""""""""""""""""""""""""
-" => Peepopen
+" => ZenCoding
 """"""""""""""""""""""""""""""
-map <leader>j :PeepOpen<cr>
+" Enable all functions in all modes
+let g:user_zen_mode='a'
 
 
 """"""""""""""""""""""""""""""
@@ -80,8 +82,34 @@ map <leader>nf :NERDTreeFind<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-multiple-cursors
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:multi_cursor_next_key="\<C-s>"
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => surround.vim config
 " Annotate strings with gettext http://amix.dk/blog/post/19678
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 vmap Si S(i_<esc>f)
 au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-airline config (force color)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:airline_theme="luna"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vimroom
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:goyo_width=100
+let g:goyo_margin_top = 2
+let g:goyo_margin_bottom = 2
+nnoremap <silent> <leader>z :Goyo<cr>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Syntastic (syntax checker)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:syntastic_python_checkers=['pyflakes']
